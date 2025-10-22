@@ -1,0 +1,180 @@
+/* 1. Intégration de la police Gotham Bold */
+@font-face {
+    font-family: 'Gotham Bold Custom';
+    src: url('Gotham-Bold.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+/* 2. Styles généraux pour l'écran */
+body {
+    font-family: 'Gotham Bold Custom', sans-serif;
+    color: white; /* Texte en blanc comme demandé */
+    margin: 0;
+    padding: 0;
+    background-color: #333; /* Couleur de base */
+    /* Création du fond quadrillé rose/bleu */
+    background-image:
+        repeating-linear-gradient(0deg, rgba(255, 105, 180, 0.1) 0, rgba(255, 105, 180, 0.1) 1px, transparent 1px, transparent 40px),
+        repeating-linear-gradient(90deg, rgba(65, 105, 225, 0.1) 0, rgba(65, 105, 225, 0.1) 1px, transparent 1px, transparent 40px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+    max-width: 800px;
+}
+
+.logo {
+    max-width: 100px; /* Taille du logo */
+    height: auto;
+    margin-bottom: 10px;
+}
+
+main {
+    background-color: rgba(0, 0, 0, 0.7); /* Contraste pour la lisibilité */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    width: 90%;
+    max-width: 600px;
+    margin-bottom: 40px;
+}
+
+h1, h2 {
+    color: #FF69B4; /* Rose pour les titres (cohérence) */
+    text-align: center;
+}
+
+.input-group, .resultat-ligne, .resultat-total {
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+label {
+    flex-basis: 70%;
+}
+
+input[type="number"] {
+    flex-basis: 25%;
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    background-color: white;
+    color: #333;
+    text-align: right;
+    font-family: Arial, sans-serif; /* Rendre l'input lisible */
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4169E1; /* Bleu pour les boutons */
+    color: white;
+    font-family: 'Gotham Bold Custom', sans-serif;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #1E90FF;
+}
+
+.hidden {
+    display: none;
+}
+
+#resultats {
+    border-top: 3px solid #FF69B4;
+    padding-top: 20px;
+    margin-top: 20px;
+}
+
+.resultat-total {
+    font-size: 1.2em;
+    font-weight: bold;
+    background-color: rgba(255, 105, 180, 0.3); /* Rose plus prononcé */
+}
+
+/* Style spécifique pour le bouton d'impression */
+#boutonImprimer {
+    background-color: #FF69B4;
+}
+
+#boutonImprimer:hover {
+    background-color: #e04a9e;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0));
+    margin: 30px 0;
+}
+
+/* 3. Style spécifique à l'impression */
+@media print {
+    body {
+        background: white !important; /* Fond blanc */
+        color: black !important; /* Texte en noir */
+        font-family: Arial, sans-serif; /* Police standard pour économie d'encre */
+        /* Retirer les ombres et marges inutiles */
+    }
+
+    /* Cacher les éléments inutiles à l'impression */
+    header, #formulaireCalcul, #boutonImprimer, h1, .logo {
+        display: none;
+    }
+
+    /* Afficher uniquement les résultats pour l'impression */
+    main {
+        background-color: white !important;
+        box-shadow: none !important;
+        border: 1px solid #ccc;
+        padding: 20px;
+        margin: 0;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    h2 {
+        color: black !important;
+        text-align: left;
+        border-bottom: 2px solid black;
+        padding-bottom: 5px;
+    }
+
+    .resultat-ligne, .resultat-total {
+        background-color: white !important;
+        color: black !important;
+        border: none;
+    }
+
+    .resultat-total {
+        border-top: 2px solid black;
+        margin-top: 15px;
+        padding-top: 10px;
+    }
+
+    /* Rétablir l'affichage des résultats pour l'impression */
+    #resultats {
+        display: block !important;
+        border-top: none;
+        padding-top: 0;
+    }
+}
+
