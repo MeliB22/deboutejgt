@@ -8,12 +8,11 @@
 </head>
 <body>
     <header>
-        <img src="Logo LFE.png" alt="Logo LFE" class="logo">
         <h1>Calcul de débouté</h1>
     </header>
 
     <main>
-        <form id="formulaireCalcul">
+        <form id="formulaireCalcul" class="printable-content">
             <h2>1. Demandes Initiales (du Bailleur Social)</h2>
 
             <div class="input-group">
@@ -50,17 +49,17 @@
                 <input type="number" id="condamnationFraisProcedure" min="0" step="0.01" required>
             </div>
 
-            <button type="submit" id="boutonCalcul">Calculer le Débouté</button>
+            <button type="submit" id="boutonCalcul" class="non-imprimable">Calculer le Débouté</button>
         </form>
 
-        <section id="resultats" class="hidden">
+        <section id="resultats" class="hidden printable-content">
             <h2>Résultats du Débouté</h2>
             <div id="resultatLoyersCharges" class="resultat-ligne"></div>
             <div id="resultatReparations" class="resultat-ligne"></div>
             <div id="resultatFraisProcedure" class="resultat-ligne"></div>
             <div id="resultatTotal" class="resultat-total"></div>
 
-            <button id="boutonImprimer" onclick="window.print()">Imprimer le Résultat</button>
+            <button id="boutonImprimer" class="non-imprimable" onclick="window.print()">Imprimer le Résultat</button>
         </section>
     </main>
 

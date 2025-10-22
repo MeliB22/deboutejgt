@@ -30,11 +30,7 @@ header {
     max-width: 800px;
 }
 
-.logo {
-    max-width: 100px; /* Taille du logo */
-    height: auto;
-    margin-bottom: 10px;
-}
+/* Suppression du style .logo */
 
 main {
     background-color: rgba(0, 0, 0, 0.7); /* Contraste pour la lisibilité */
@@ -128,53 +124,60 @@ hr {
 
 /* 3. Style spécifique à l'impression */
 @media print {
+    /* Masquer les éléments non-imprimables (boutons, titre principal) */
+    .non-imprimable, header {
+        display: none !important;
+    }
+    
     body {
         background: white !important; /* Fond blanc */
         color: black !important; /* Texte en noir */
         font-family: Arial, sans-serif; /* Police standard pour économie d'encre */
-        /* Retirer les ombres et marges inutiles */
+        padding: 20px;
     }
 
-    /* Cacher les éléments inutiles à l'impression */
-    header, #formulaireCalcul, #boutonImprimer, h1, .logo {
-        display: none;
+    /* Rétablir l'affichage des résultats s'ils ont été masqués */
+    #resultats.hidden {
+        display: block !important;
     }
 
-    /* Afficher uniquement les résultats pour l'impression */
-    main {
+    /* Rétablir l'affichage des inputs pour voir les valeurs saisies */
+    #formulaireCalcul, #resultats {
         background-color: white !important;
         box-shadow: none !important;
-        border: 1px solid #ccc;
-        padding: 20px;
+        padding: 0;
         margin: 0;
+        max-width: none;
         width: 100%;
-        max-width: 100%;
     }
 
-    h2 {
+    h1, h2 {
         color: black !important;
         text-align: left;
-        border-bottom: 2px solid black;
+        border-bottom: 2px solid #ccc;
         padding-bottom: 5px;
     }
 
-    .resultat-ligne, .resultat-total {
+    .input-group, .resultat-ligne, .resultat-total {
         background-color: white !important;
         color: black !important;
-        border: none;
+        border: 1px solid #eee; /* Ajouter une légère bordure pour structurer */
+        padding: 8px;
+        margin-bottom: 5px;
+    }
+
+    input[type="number"] {
+        border: 1px dashed #999; /* Afficher clairement les valeurs entrées */
+        background-color: #f7f7f7;
     }
 
     .resultat-total {
         border-top: 2px solid black;
-        margin-top: 15px;
-        padding-top: 10px;
+        font-weight: bold;
     }
 
-    /* Rétablir l'affichage des résultats pour l'impression */
-    #resultats {
-        display: block !important;
-        border-top: none;
-        padding-top: 0;
+    /* Forcer l'affichage des valeurs d'input en noir */
+    input[type="number"] {
+        color: black !important;
     }
 }
-
