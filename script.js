@@ -27,9 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const condamnationFP = parseFloat(document.getElementById('condamnationFraisProcedure').value) || 0;
 
         // 2. Calcul du "Débouté" pour chaque poste
-        // Le débouté = Demande Initiale - Condamnation
-        // Si le résultat est négatif (condamnation > demande), on prend 0, car un débouté ne peut être négatif.
-        
         const debouteLC = Math.max(0, demandeLC - condamnationLC);
         const debouteRL = Math.max(0, demandeRL - condamnationRL);
         const debouteFP = Math.max(0, demandeFP - condamnationFP);
@@ -51,15 +48,15 @@ document.addEventListener('DOMContentLoaded', () => {
         resultatFraisProcedureDiv.innerHTML = 
             `**Débouté Frais de procédure :** <span>${formaterEuro(debouteFP)}</span>`;
 
-        // Affichage du total
+        // MODIFICATION ICI : Remplacement de "Somme à soustraire" par "Somme à passer en Rubrique 686"
         resultatTotalDiv.innerHTML = 
-            `**TOTAL du Débouté (Somme à passer en rubrique 686) :** <span>${formaterEuro(debouteTotal)}</span>`;
+            `**TOTAL du Débouté (Somme à passer en Rubrique 686) :** <span>${formaterEuro(debouteTotal)}</span>`;
         
         // Rendre la section de résultats visible
         resultatsSection.classList.remove('hidden');
 
         // Mettre à jour l'en-tête pour l'impression (optionnel mais clair)
-        const totalAjustement = debouteTotal > 0 ? ` (${formaterEuro(debouteTotal)} à passer en rubrique 686)` : '';
+        const totalAjustement = debouteTotal > 0 ? ` (${formaterEuro(debouteTotal)} à passer en Rubrique 686)` : '';
         document.querySelector('h2').textContent = `Résultats du Débouté${totalAjustement}`;
 
     });
