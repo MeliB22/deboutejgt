@@ -48,14 +48,14 @@ document.addEventListener('DOMContentLoaded', () => {
         resultatFraisProcedureDiv.innerHTML = 
             `**Débouté Frais de procédure :** <span>${formaterEuro(debouteFP)}</span>`;
 
-        // MODIFICATION ICI : Remplacement de "Somme à soustraire" par "Somme à passer en Rubrique 686"
+        // LIGNE MODIFIÉE : Affichage du total avec le nouveau libellé
         resultatTotalDiv.innerHTML = 
             `**TOTAL du Débouté (Somme à passer en Rubrique 686) :** <span>${formaterEuro(debouteTotal)}</span>`;
         
         // Rendre la section de résultats visible
         resultatsSection.classList.remove('hidden');
 
-        // Mettre à jour l'en-tête pour l'impression (optionnel mais clair)
+        // LIGNE MODIFIÉE : Mise à jour de l'en-tête pour l'impression
         const totalAjustement = debouteTotal > 0 ? ` (${formaterEuro(debouteTotal)} à passer en Rubrique 686)` : '';
         document.querySelector('h2').textContent = `Résultats du Débouté${totalAjustement}`;
 
