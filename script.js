@@ -53,13 +53,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Affichage du total
         resultatTotalDiv.innerHTML = 
-            `**TOTAL du Débouté (Somme à soustraire) :** <span>${formaterEuro(debouteTotal)}</span>`;
+            `**TOTAL du Débouté (Somme à passer en rubrique 686) :** <span>${formaterEuro(debouteTotal)}</span>`;
         
         // Rendre la section de résultats visible
         resultatsSection.classList.remove('hidden');
 
         // Mettre à jour l'en-tête pour l'impression (optionnel mais clair)
-        const totalAjustement = debouteTotal > 0 ? ` (${formaterEuro(debouteTotal)} à soustraire)` : '';
+        const totalAjustement = debouteTotal > 0 ? ` (${formaterEuro(debouteTotal)} à passer en rubrique 686)` : '';
         document.querySelector('h2').textContent = `Résultats du Débouté${totalAjustement}`;
 
     });
